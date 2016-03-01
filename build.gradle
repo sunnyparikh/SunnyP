@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.xtl.sunny.drive"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.google.android.gms:play-services-auth:8.4.0'
+    compile 'com.google.android.gms:play-services-drive:8.4.0'
+    compile 'com.google.apis:google-api-services-drive:v2-rev206-1.21.0'
+    compile 'com.google.http-client:google-http-client-android:1.17.0-rc' //exclude module: 'httpclient'
+    compile 'com.google.api-client:google-api-client-android:1.17.0-rc'// exclude module: 'httpclient'
+    compile 'com.google.api-client:google-api-client-gson:1.17.0-rc'// exclude module: 'httpclient'
+    configurations {
+        compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
+    }
+
+
+}
